@@ -1,4 +1,4 @@
-package people;
+package movie;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -7,10 +7,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class SpringDataRedisRepositoryMain{
+public class TestMovieMain {
     
     public static void main(String[] args) {
-        SpringApplication.run(SpringDataRedisRepositoryMain.class, args);
+        SpringApplication.run(TestMovieMain.class, args);
     }
     
     @Bean
@@ -19,12 +19,13 @@ public class SpringDataRedisRepositoryMain{
 
             System.out.println("Running Spring Boot application in Console... ");
 
-            PersonRepository repo = ctx.getBean(PersonRepository.class);
-            Person p = new Person("diegopacheco", "diego.pacheco.it@gmail.com");
-            repo.save(p);                                         
-            System.out.println("Persons: " + repo.findAll());
-            System.out.println("Count: " + repo.count());
-            repo.delete(p);  
+            MovieService service = ctx.getBean(MovieService.class);
+            MovieRepository repo = ctx.getBean(MovieRepository.class);
+            Movie movie = new Movie("movie lala");
+            service.createMovie(movie);
+            service.watch("1");
+            System.out.println("Movie: " + service.getMovie("123"));
+            System.out.println("All movies" + service.getAll());
         };
     }
 
