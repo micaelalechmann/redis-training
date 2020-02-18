@@ -1,4 +1,4 @@
-package movie;
+package training.movie;
 
 import org.springframework.data.repository.CrudRepository;
 

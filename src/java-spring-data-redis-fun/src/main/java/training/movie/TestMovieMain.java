@@ -1,4 +1,4 @@
-package movie;
+package training.movie;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,10 +21,18 @@ public class TestMovieMain {
 
             MovieService service = ctx.getBean(MovieService.class);
             MovieRepository repo = ctx.getBean(MovieRepository.class);
-            Movie movie = new Movie("movie lala");
-            service.createMovie(movie);
+            Movie movie1 = new Movie("Parasite");
+            Movie movie2 = new Movie("Jojo Rabbit");
+            Movie movie3 = new Movie("1917");
+            Movie movie4 = new Movie("Ford vs Ferrari");
+            service.createMovie(movie1);
+            service.createMovie(movie2);
+            service.createMovie(movie3);
+            service.createMovie(movie4);
             service.watch("1");
-            System.out.println("Movie: " + service.getMovie("123"));
+            service.watch("2");
+            service.watch("2");
+            service.watch("3");
             System.out.println("All movies" + service.getAll());
         };
     }
